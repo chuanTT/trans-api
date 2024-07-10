@@ -12,9 +12,7 @@ app.get("/translation", async (req, res) => {
   const url = new URL(
     "https://t11.freetranslations.org/freetranslationsorg.php"
   );
-  url.searchParams.append("p1", query?.p1);
-  url.searchParams.append("p2", query?.p2);
-  url.searchParams.append("p3", query?.p3);
+  url.search = new URLSearchParams(query);
   const data = await axios.get(url, {
     headers: header,
     responseType: "text"
@@ -28,18 +26,18 @@ app.get("/speak", async (req, res) => {
   const url = new URL(
     "https://www.freetranslations.org/speak.php"
   );
-  url.searchParams.append("word", query?.word);
-  url.searchParams.append("lang", query?.lang);
+  url.search = new URLSearchParams(query);
   const data = await axios.get(url, {
     headers: header,
     responseType: "arraybuffer"
   });
   const extension = sliceExtendFile(data.headers.get("Content-Type"));
   if (extension) {
-    // res.header("Content-Type", data.headers.get("Content-Type"));
-    // const download = Buffer.from(data.data, "base64");
-    return res.sendFile(data.data);
+    req.headers = data.headers
+    return res.send(data.data);
   }
 });
 
-app.listen(3001);
+app.listen(5000, () => {
+  console.log('Server start port 5000')
+});
