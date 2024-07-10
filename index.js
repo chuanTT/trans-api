@@ -17,6 +17,7 @@ app.get("/translation", async (req, res) => {
   url.searchParams.append("p3", query?.p3);
   const data = await axios.get(url, {
     headers: header,
+    responseType: "text"
   });
   return res.send(data.data);
 });
