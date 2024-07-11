@@ -16,7 +16,7 @@ export const getHeader = () => {
     accept:
       "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
   };
-  return headers
+  return headers;
 };
 
 export const sliceExtendFile = (name) => {
@@ -30,4 +30,31 @@ export const sliceExtendFile = (name) => {
   }
 
   return str;
+};
+
+export const translateLanguage = (target_lang) => {
+  switch (target_lang) {
+    case "zh-CHS":
+      target_lang = "zh-CN";
+      break;
+    case "zh-CHT":
+      target_lang = "zh-TW";
+      break;
+
+    case "nb":
+      target_lang = "no";
+      break;
+
+    case "kmr":
+      target_lang = "ku";
+      break;
+
+    case "mn-Cyrl":
+      target_lang = "mn";
+      break;
+
+    case "mww":
+      target_lang = "hmn";
+      break;
+  }
 };

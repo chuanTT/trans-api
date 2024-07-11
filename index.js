@@ -1,6 +1,6 @@
 import axios from "axios";
 import express from "express";
-import { getHeader, sliceExtendFile } from "./functions.js";
+import { getHeader } from "./functions.js";
 const app = express();
 
 app.use(express.urlencoded({ extended: true }));
