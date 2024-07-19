@@ -1,6 +1,7 @@
 import axios from "axios";
 import cors from "cors";
 import express from "express";
+import fs from "fs";
 import { funTmpnum, getHeader } from "./functions.js";
 const app = express();
 
@@ -37,6 +38,10 @@ app.get("/speak", async (req, res) => {
   res.setHeader("Content-Type", response.headers.get("Content-Type"));
   response.data.pipe(res);
 });
+
+app.get("/lang-support", async (_req, res) => {
+  return res.json(JSON.parse(fs.readFileSync("./lang.json")))
+})
 
 app.listen(5000, () => {
   console.log("Server start port 5000");

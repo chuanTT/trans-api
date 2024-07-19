@@ -56,7 +56,7 @@ export const funTmpnum = (target_lang) => {
     } else {
       tmpnum = Math.floor(Math.random() * 18) + 1;
     }
-  } while ([17, 18, 15, 14, 13].includes(tmpnum));
+  } while ([17, 18, 16, 15, 14, 13].includes(tmpnum));
   return tmpnum;
 };
 
