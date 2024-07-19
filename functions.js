@@ -68,7 +68,7 @@ export const getHeader = (domain) => {
     "sec-fetch-dest": "document",
     "sec-fetch-mode": "navigate",
     "cache-control": "max-age=0",
-    authority: domain,
+    // authority: domain,
     "upgrade-insecure-requests": "1",
     "accept-language": "en-GB,en;q=0.9,tr-TR;q=0.8,tr;q=0.7,en-US;q=0.6",
     accept:
