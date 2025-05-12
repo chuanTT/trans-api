@@ -29,8 +29,9 @@ app.get("/translation", async (req, res) => {
 app.get("/speak", async (req, res) => {
   const header = getHeader();
   const query = req.query;
-  const url = new URL("https://www.freetranslations.org/speak.php");
+  const url = new URL("https://www.freetranslations.org/wp-admin/admin-ajax.php");
   url.search = new URLSearchParams(query);
+  url.searchParams.append('action', 'gt_speak_tts')
   const response = await axios.get(url, {
     headers: header,
     responseType: "stream",
